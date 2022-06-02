@@ -65,4 +65,14 @@
       task.value = "";
     }
 
-
+   function taskComplete(event) {
+      let title = document.getElementById("title").value
+      let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+      tasks.forEach(task => {
+        if (task.title === event.nextElementSibling.value) {
+          task.completed = !task.completed;
+        }
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      event.nextElementSibling.classList.toggle("completed");
+    }
