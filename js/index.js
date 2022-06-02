@@ -1,4 +1,4 @@
-// On app load, get all tasks from localStorage
+    // On app load, get all tasks from localStorage
     window.onload = loadTasks;
 
     // On form submit add task
@@ -25,7 +25,6 @@
         const list = document.querySelector("ul");
         const li = document.createElement("li");
         li.innerHTML = `
-           <input type="text" value="${index}" class="task">
           <input type="checkbox" onclick="taskComplete(this)" class="check" ${task.completed ? 'checked' : ''}>
           <input type="text" value="${task.title}" class="task ${task.completed ? 'completed' : ''}" onfocus="getCurrentTask(this)" onblur="editTask(this)">
           <input type="text" value="${task.description}" class="task" >
@@ -48,7 +47,6 @@
         alert("Please add some task!");
         return false;
       }
-
       // add task to local storage
       localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), task]));
 
@@ -66,17 +64,15 @@
     }
 
     function taskComplete(event) {
-      let title = document.getElementById("title").value
       let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
       tasks.forEach(task => {
-        if (task.title === event.nextElementSibling.value) {
+        if (task.task === event.nextElementSibling.value) {
           task.completed = !task.completed;
         }
       });
       localStorage.setItem("tasks", JSON.stringify(tasks));
       event.nextElementSibling.classList.toggle("completed");
     }
-
 
     function removeTask(event) {
       let title = document.getElementById("title").value
@@ -90,9 +86,10 @@
       localStorage.setItem("tasks", JSON.stringify(tasks));
       event.parentElement.remove();
       console.log(tasks);
+
     }
 
-   // store current task to track changes
+    // store current task to track changes
     var currentTask = null;
 
     // get current task
@@ -100,8 +97,7 @@
       currentTask = event.value;
     }
 
-
-     // edit the task and update local storage
+    // edit the task and update local storage
     function editTask(event) {
       let title = document.getElementById("title").value
       let description = document.getElementById("desc").value
