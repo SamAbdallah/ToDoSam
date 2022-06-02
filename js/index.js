@@ -49,4 +49,20 @@
         return false;
       }
 
-      
+      // add task to local storage
+      localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), task]));
+
+      // create list item, add innerHTML and append to ul
+      const li = document.createElement("li");
+      li.innerHTML = `<input type="checkbox" onclick="taskComplete(this)" class="check">
+      <input type="text" value="${title}" class="task" onfocus="getCurrentTask(this)" onblur="editTask(this)">
+      <input type="text" value="${description}" class="task" onfocus="getCurrentTask(this)" onblur="editTask(this)">
+      <input type="text" value="${point}" class="task" onfocus="getCurrentTask(this)" onblur="editTask(this)">
+      <input type="text" value="${time}" class="task">
+      <i class="fa fa-trash" onclick="removeTask(this)"></i>`;
+      list.insertBefore(li, list.children[0]);
+      // clear input
+      task.value = "";
+    }
+
+
