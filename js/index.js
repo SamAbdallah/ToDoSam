@@ -99,3 +99,32 @@
     function getCurrentTask(event) {
       currentTask = event.value;
     }
+
+
+     // edit the task and update local storage
+    function editTask(event) {
+      let title = document.getElementById("title").value
+      let description = document.getElementById("desc").value
+      let point = document.getElementById("point").value
+      let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+      // check if task is empty
+      if (event.value === "") {
+        alert("Task is empty!");
+        event.value = currentTask;
+        return;
+      }
+      // update task
+      tasks.forEach(task => {
+        if (task.title === currentTask) {
+          task.title = event.value;
+        }
+        if (task.description === currentTask) {
+          task.description = event.value;
+        }
+        if (task.point === currentTask) {
+          task.point = event.value;
+        }
+      });
+      // update local storage
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
