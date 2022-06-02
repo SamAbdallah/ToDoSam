@@ -1,4 +1,4 @@
- @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
 
     * {
       margin: 0
@@ -40,7 +40,7 @@
       background-color: #262e4c;
     }
 
-   .app form input {
+    .app form input {
       border: none;
       background-color: #3c4979;
       font-size: 18px;
@@ -71,43 +71,3 @@
       border-bottom: 1px solid #3a4674;
     }
 
-    .check {
-      width: 0.8em;
-      height: 0.8em;
-      cursor: pointer;
-      border-radius: 50%;
-      background-color: white;
-      border: 1px solid rgb(255, 255, 255);
-      -webkit-appearance: none;
-    }
-
-    .check:checked {
-      background-color: #1dd2af;
-    }
-
-    .task {
-      font-size: 18px;
-      padding: 0 10px;
-      width: fit-content;
-      background: transparent;
-      border: none;
-      color: #fff;
-    }
-
-    .task:focus {
-      outline: none;
-    }
-
-    .app ul li i {
-      float: right;
-      cursor: pointer;
-    }
-
-    .app ul li i:hover {
-      color: rgb(255, 82, 82);
-    }
-
-    .completed {
-      color: rgba(192, 192, 192, 0.8);
-      text-decoration: line-through;
-    }
