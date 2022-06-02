@@ -36,7 +36,7 @@
       });
     }
 
-     function addTask() {
+    function addTask() {
       let time = new Date().toISOString()
       let title = document.getElementById("title").value
       let description = document.getElementById("desc").value
@@ -65,7 +65,7 @@
       task.value = "";
     }
 
-   function taskComplete(event) {
+    function taskComplete(event) {
       let title = document.getElementById("title").value
       let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
       tasks.forEach(task => {
@@ -75,4 +75,27 @@
       });
       localStorage.setItem("tasks", JSON.stringify(tasks));
       event.nextElementSibling.classList.toggle("completed");
+    }
+
+
+    function removeTask(event) {
+      let title = document.getElementById("title").value
+      let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+      tasks.forEach(task => {
+        if (task.title === event.parentNode.children[1].value) {
+          // delete task
+          tasks.splice(tasks.indexOf(task), 1);
+        }
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      event.parentElement.remove();
+      console.log(tasks);
+    }
+
+   // store current task to track changes
+    var currentTask = null;
+
+    // get current task
+    function getCurrentTask(event) {
+      currentTask = event.value;
     }
