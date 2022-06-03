@@ -9,9 +9,9 @@
 
     function loadTasks() {
       let time = new Date().toISOString()
-      let title = document.getElementById("title").value
-      let description = document.getElementById("desc").value
-      let point = document.getElementById("point").value
+      let title = $('#title').val()
+      let description =$('#desc').val()
+      let point = $('#point').val()
       // check if localStorage has any tasks
       // if not then return
       if (localStorage.getItem("tasks") == null) return;
@@ -22,7 +22,7 @@
 
       // Loop through the tasks and add them to the list
       tasks.forEach((task,index) => {
-        const list = document.querySelector("ul");
+        const list = document.querySelector("ul"); //jquery: $("ul)
         const li = document.createElement("li");
         li.innerHTML = `
           <input type="checkbox" onclick="taskComplete(this)" class="check" ${task.completed ? 'checked' : ''}>
@@ -37,9 +37,12 @@
 
     function addTask() {
       let time = new Date().toISOString()
-      let title = document.getElementById("title").value
-      let description = document.getElementById("desc").value
-      let point = document.getElementById("point").value
+      // let title = document.getElementById("title").value //
+      let title=$('#title').val()
+      // let description = document.getElementById("desc").value //
+      let description=$('#desc').val()
+      // let point = document.getElementById("point").value
+      let point=$('#point').val()
       const task = {title:title,description:description,point:point,time:time,completed:false}
       const list = document.querySelector("ul");
       // return if task is empty
@@ -75,7 +78,7 @@
     }
 
     function removeTask(event) {
-      let title = document.getElementById("title").value
+      let title =$('#title').val()
       let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
       tasks.forEach(task => {
         if (task.title === event.parentNode.children[1].value) {
@@ -99,9 +102,9 @@
 
     // edit the task and update local storage
     function editTask(event) {
-      let title = document.getElementById("title").value
-      let description = document.getElementById("desc").value
-      let point = document.getElementById("point").value
+      let title = document.getElementById("title").value     //$('#title').val()
+      let description = document.getElementById("desc").value    //$('#desc').val()
+      let point = document.getElementById("point").value    //$('#point').val()
       let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
       // check if task is empty
       if (event.value === "") {
