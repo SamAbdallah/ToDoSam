@@ -44,7 +44,7 @@
       // let point = document.getElementById("point").value
       let point=$('#point').val()
       const task = {title:title,description:description,point:point,time:time,completed:false}
-      const list = document.querySelector("ul");
+      const list = document.querySelector("ul"); //$("ul")
       // return if task is empty
       if (task.value === "") {
         alert("Please add some task!");
@@ -75,6 +75,7 @@
       });
       localStorage.setItem("tasks", JSON.stringify(tasks));
       event.nextElementSibling.classList.toggle("completed");
+      console.log("sette")
     }
 
     function removeTask(event) {
@@ -102,7 +103,7 @@
 
     // edit the task and update local storage
     function editTask(event) {
-      let title = document.getElementById("title").value     //$('#title').val()
+      let title = document.getElementById("title").value     //// let title=$('#title').val()
       let description = document.getElementById("desc").value    //$('#desc').val()
       let point = document.getElementById("point").value    //$('#point').val()
       let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
